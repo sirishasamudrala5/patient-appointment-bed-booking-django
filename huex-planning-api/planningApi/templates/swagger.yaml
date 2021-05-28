@@ -1,0 +1,71 @@
+swagger: "2.0"
+info:
+  description: "This is the Planning API server to manage patient's appointments batches for each dialysis center under ACME Corp"
+  version: "1.0.0"
+  title: "ACME corp"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "sirisha.samudrala@hashedin.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8008"
+basePath: "/"
+tags:
+- name: "appointments"
+  description: "creates a schedule plan for dialysis appointments"
+schemes:
+- "https"
+- "http"
+paths:
+  /appointments:
+   post:
+      tags:
+      - "appointments"
+      summary: "Create a batch of appointments and sends"
+      description: ""
+      operationId: "CreateAppointments"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Patients and dialysis centers information as an object"
+        required: true
+        schema:
+          type: "array"
+      responses:
+        400:
+          description: "Failed to create a schedule"
+        200:
+          description: "Succefully created a schedule"
+      security:
+      - api_key: []
+ 
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "localhost:8000/admin/"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify attributes in your account"
+      read:pets: "read attributes"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  ApiResponse:
+    type: "object"
+    properties:
+      status_code:
+        type: "integer"
+        format: "int32"
+      results:
+        type: "array"
+        items:
+          type: "object"
+      message:
+        type: "string"

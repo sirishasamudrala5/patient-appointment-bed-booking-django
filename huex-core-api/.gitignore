@@ -1,0 +1,12 @@
+venv
+venv/
+__pycache__/
+*.py[cod]
+*.so
+*.log
+*.pot
+db.sqlite3
+.vscode
+.vscode/
+**/migrations/*
+**/__pycache__/*

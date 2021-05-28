@@ -1,0 +1,5 @@
+create a post req to create patient - call get to test the flow
+authentication  - based patient gets - testcase
+dont catch the exceptions if you dont have an alternative to do
+message n code should be in view
+my code should only give output or throw an exception
